@@ -1,4 +1,3 @@
-
 <script>
 import { ref } from 'vue'
 import {
@@ -27,7 +26,7 @@ export default {
     return {
       open,
       openModal,
-      closeModal,
+      closeModal
     }
   }
 }
@@ -77,7 +76,7 @@ export default {
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">
-                    <slot name="title"/>
+                    <slot name="title" />
                   </DialogTitle>
                 </div>
               </div>
@@ -85,9 +84,7 @@ export default {
                 <slot></slot>
               </div>
               <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                <slot name="actions">
-
-                </slot>
+                <slot name="actions"> </slot>
               </div>
             </DialogPanel>
           </TransitionChild>
