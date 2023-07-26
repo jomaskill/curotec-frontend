@@ -1,5 +1,4 @@
-
-<script>
+<script setup>
 import { ref } from 'vue'
 import {
   DialogPanel,
@@ -10,32 +9,29 @@ import {
 } from '@headlessui/vue'
 import { XMarkIcon } from '@heroicons/vue/20/solid'
 
-export default {
-  components: { DialogVue, DialogTitle, DialogPanel, TransitionChild, TransitionRoot, XMarkIcon },
+const open = ref(false)
 
-  setup() {
-    const open = ref(false)
-
-    const openModal = () => {
-      open.value = true
-    }
-
-    const closeModal = () => {
-      open.value = false
-    }
-
-    return {
-      open,
-      openModal,
-      closeModal,
-    }
-  }
+const openModal = () => {
+  open.value = true
 }
+
+const closeModal = () => {
+  emit('close')
+  open.value = false
+}
+
+defineExpose({
+  open,
+  openModal,
+  closeModal
+})
+
+const emit = defineEmits(['close'])
 </script>
 
 <template>
   <TransitionRoot as="template" :show="open">
-    <DialogVue as="div" class="relative z-10" @close="open = false">
+    <DialogVue as="div" class="relative z-10">
       <TransitionChild
         as="template"
         enter="ease-out duration-300"
@@ -68,7 +64,7 @@ export default {
                 <button
                   type="button"
                   class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                  @click="open = false"
+                  @click="closeModal"
                 >
                   <span class="sr-only">Close</span>
                   <XMarkIcon class="h-6 w-6" aria-hidden="true" />
@@ -77,7 +73,7 @@ export default {
               <div class="sm:flex sm:items-start">
                 <div class="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <DialogTitle as="h3" class="text-base font-semibold leading-6 text-gray-900">
-                    <slot name="title"/>
+                    <slot name="title" />
                   </DialogTitle>
                 </div>
               </div>
@@ -85,9 +81,7 @@ export default {
                 <slot></slot>
               </div>
               <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse">
-                <slot name="actions">
-
-                </slot>
+                <slot name="actions"> </slot>
               </div>
             </DialogPanel>
           </TransitionChild>

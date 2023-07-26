@@ -11,11 +11,21 @@ export function useApi() {
   }
 
   const post = async (url, data) => {
-    return await axiosInstance.post(url, data)
+    // eslint-disable-next-line no-useless-catch
+    try {
+      return (await axiosInstance.post(url, data)).data
+    } catch (e) {
+      throw e
+    }
   }
 
   const put = async (url, data) => {
-    return await axiosInstance.put(url, data)
+    // eslint-disable-next-line no-useless-catch
+    try {
+      return (await axiosInstance.put(url, data)).data
+    } catch (e) {
+      throw e
+    }
   }
 
   const destroy = async (url) => {
