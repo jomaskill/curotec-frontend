@@ -1,18 +1,18 @@
 import { defineStore } from 'pinia'
-import {computed, ref } from "vue";
+import { computed, ref } from 'vue'
 
 export const usePostStore = defineStore('post', () => {
-    const post = ref()
+  const post = ref()
 
-    const getPostTitle = computed(() => post.value?.title)
+  const getPostTitle = computed(() => post.value?.title)
 
-    function setHighlighted(post) {
-        this.post = post
-    }
+  function setHighlighted(post) {
+    this.post = post
+  }
 
-    return {
-        post,
-        getPostTitle,
-        setHighlighted
-    }
+  return {
+    post,
+    getPostTitle,
+    setHighlighted
+  }
 })
