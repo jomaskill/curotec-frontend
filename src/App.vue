@@ -11,7 +11,7 @@ import Child from "@/views/Posts/Child.vue";
       <RouterLink to="/posts">Post</RouterLink>
       <RouterLink to="/about">About</RouterLink>
     </header>
-    <div class="h-full w-full">
+    <div class="h-full w-full p-8">
       <RouterView />
     </div>
   </div>
