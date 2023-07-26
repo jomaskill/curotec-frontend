@@ -6,7 +6,7 @@ import Child from "@/views/Posts/Child.vue";
 
 <template>
   <div class="block bg-gray-700">
-    <header class="">
+    <header>
       <RouterLink to="/">Home</RouterLink>
       <RouterLink to="/posts">Post</RouterLink>
       <RouterLink to="/about">About</RouterLink>
@@ -22,6 +22,6 @@ import Child from "@/views/Posts/Child.vue";
     @apply w-full h-24 bg-gray-800 p-4
   }
   header > a {
-    @apply border border-amber-400 p-2
+    @apply border border-amber-400 p-4
   }
 </style>
